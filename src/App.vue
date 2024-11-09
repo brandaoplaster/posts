@@ -3,9 +3,10 @@ import Navbar from './components/Navbar.vue';
 </script>
 
 <template>
-  <Navbar />
+   <div class="min-h-screen flex flex-col">
+    <Navbar />
+    <main class="flex-grow">
+      <router-view />
+    </main>
+  </div>
 </template>
-
-<style scoped>
-
-</style>
