@@ -10,7 +10,7 @@
 </script>
 
 <template>
-  <nav class="bg-background text-text shadow-md p-4 flex items-center justify-between">
+  <nav class="w-full h-16 bg-background text-text shadow-md flex items-center justify-between px-8 fixed top-0">
     <!-- Logo -->
     <div class="text-primary font-bold text-xl">
       MinhaApp
