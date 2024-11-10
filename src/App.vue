@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import Navbar from './components/Navbar.vue';
+import MainHeader from './components/MainHeader.vue';
 </script>
 
 <template>
-   <div class="min-h-screen flex flex-col">
-    <Navbar />
-    <main class="flex-grow">
+  <section class="mx-auto max-w-3xl px-4 sm:px-6 xl:max-w-5xl xl:px-0">
+    <MainHeader />
+    <main class="container mx-auto pt-24">
       <router-view />
     </main>
-  </div>
+  </section>
 </template>
