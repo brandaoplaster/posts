@@ -1,4 +1,5 @@
 import HomePage from "../pages/HomePage.vue";
+import ArticlePage from "../pages/ArticlePage.vue";
 
 export default [
   {
@@ -6,4 +7,9 @@ export default [
     name: "home",
     component: HomePage,
   },
+  {
+    path: "/article/:id",
+    name: "article",
+    component: ArticlePage
+  }
 ];
