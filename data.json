@@ -1,8 +1,9 @@
 [
   {
     "title": "First Article",
+    "summary": "This article introduces the basics of Vue 3 and how to get started with it.",
     "path": "/content/article1.md",
-    "publicationDate": "2024-01-01",
+    "publishedAt": "2024-01-01",
     "categories": [
       { "name": "Vue.js" },
       { "name": "JavaScript" }
@@ -10,8 +11,9 @@
   },
   {
     "title": "Second Article",
+    "summary": "Learn how TypeScript can improve your frontend development and integrate it with Vue.",
     "path": "article2.md",
-    "publicationDate": "2024-01-05",
+    "publishedAt": "2024-01-05",
     "categories": [
       { "name": "Vue.js" },
       { "name": "JavaScript" }
@@ -19,8 +21,9 @@
   },
   {
     "title": "3 Article",
+    "summary": "Learn how TypeScript can improve your frontend development and integrate it with Vue.",
     "path": "article2.md",
-    "publicationDate": "2024-01-05",
+    "publishedAt": "2024-01-05",
     "categories": [
       { "name": "Elixir" },
       { "name": "Docker" }
