@@ -1,24 +1,54 @@
 <template>
-  <div class="p-6">
+  <div class="divide-y divide-gray-200 dark:divide-gray-700 pt-6">
     <h1 class="text-2xl font-bold mb-4">Lista de Artigos</h1>
-    <ul>
-      <li v-for="article in articles" :key="article.id" class="mb-4 p-4 border rounded-lg">
-        <h2 class="text-xl font-semibold">{{ article.title }}</h2>
-        <p>{{ article.title }}</p>
+    <ul class="divide-y divide-gray-200 dark:divide-gray-700">
+      <li v-for="article in articles" :key="article.title" class="py-12">
+        <article>
+          <div class="space-y-2 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">
+            <div class="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
+              {{ article.publishedAt }}
+            </div>
+            <div class="space-y-5 xl:col-span-3">
+              <div class="space-y-6">
+                <div>
+                  <h2 class="text-2xl font-bold leading-8 tracking-tight">
+                    {{ article.title }}
+                  </h2>
+                  <div class="flex flex-wrap">
+                    <div v-for="category in article.categories" :key="category.name" class="mr-3">
+                      <a href="#"
+                        class="text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
+                        {{ category.name }}
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="prose max-w-none text-gray-500 dark:text-gray-400">
+                  {{ article.summary }}
+                </div>
+              </div>
+              <div class="text-base font-medium leading-6">
+                <a href="#" class="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
+                  Read more →
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
       </li>
     </ul>
   </div>
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
-import { Article } from '../types/article';
+import { onMounted, ref } from "vue";
+import { Article } from "../types/article";
 
 const articles = ref<Article[]>([]);
 
 onMounted(async () => {
   try {
-    const response = await fetch('data.json');
+    const response = await fetch("data.json");
     articles.value = await response.json();
   } catch (error) {
     console.error("Erro ao carregar o JSON:", error);
