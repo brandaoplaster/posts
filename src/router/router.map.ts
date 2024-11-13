@@ -8,7 +8,7 @@ export default [
     component: HomePage,
   },
   {
-    path: "/article/:id",
+    path: "/article/:title",
     name: "article",
     component: ArticlePage
   }
