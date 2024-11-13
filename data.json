@@ -1,0 +1,29 @@
+[
+  {
+    "title": "First Article",
+    "path": "/content/article1.md",
+    "publicationDate": "2024-01-01",
+    "categories": [
+      { "name": "Vue.js" },
+      { "name": "JavaScript" }
+    ]
+  },
+  {
+    "title": "Second Article",
+    "path": "article2.md",
+    "publicationDate": "2024-01-05",
+    "categories": [
+      { "name": "Vue.js" },
+      { "name": "JavaScript" }
+    ]
+  },
+  {
+    "title": "3 Article",
+    "path": "article2.md",
+    "publicationDate": "2024-01-05",
+    "categories": [
+      { "name": "Elixir" },
+      { "name": "Docker" }
+    ]
+  }
+]
