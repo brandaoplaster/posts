@@ -12,7 +12,7 @@
               <div class="space-y-6">
                 <div>
                   <h2 class="text-2xl font-bold leading-8 tracking-tight">
-                    <router-link :to="{ name: 'article', params: { title: article.title } }" class="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
+                    <router-link :to="{ name: 'article', params: { id: article.id } }" class="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
                       {{ article.title }}
                     </router-link>
                   </h2>
@@ -30,7 +30,7 @@
                 </div>
               </div>
               <div class="text-base font-medium leading-6">
-                <router-link :to="{ name: 'article', params: { title: article.title } }" class="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
+                <router-link :to="{ name: 'article', params: { id: article.id } }" class="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
                   Read more →
                 </router-link>
               </div>
@@ -51,7 +51,9 @@ const articles = ref<Article[]>([]);
 onMounted(async () => {
   try {
     const response = await fetch("data.json");
+    console.log(response)
     articles.value = await response.json();
+    console.log(articles)
   } catch (error) {
     console.error("Erro ao carregar o JSON:", error);
   }
