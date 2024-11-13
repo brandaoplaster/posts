@@ -12,7 +12,9 @@
               <div class="space-y-6">
                 <div>
                   <h2 class="text-2xl font-bold leading-8 tracking-tight">
-                    {{ article.title }}
+                    <router-link :to="{ name: 'article', params: { title: article.title } }" class="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
+                      {{ article.title }}
+                    </router-link>
                   </h2>
                   <div class="flex flex-wrap">
                     <div v-for="category in article.categories" :key="category.name" class="mr-3">
@@ -28,9 +30,9 @@
                 </div>
               </div>
               <div class="text-base font-medium leading-6">
-                <a href="#" class="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
+                <router-link :to="{ name: 'article', params: { title: article.title } }" class="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
                   Read more →
-                </a>
+                </router-link>
               </div>
             </div>
           </div>
