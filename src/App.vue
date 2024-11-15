@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import MainFooter from './components/MainFooter.vue';
 import MainHeader from './components/MainHeader.vue';
 </script>
 
@@ -8,5 +9,7 @@ import MainHeader from './components/MainHeader.vue';
     <main class="container mx-auto pt-24">
       <router-view />
     </main>
+
+    <MainFooter />
   </section>
 </template>
