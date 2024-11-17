@@ -11,9 +11,9 @@
     </div>
     <div class="items-start space-y-2 xl:grid xl:grid-cols-3 xl:gap-x-8 xl:space-y-0">
       <div class="flex flex-col items-center space-x-2 pt-8">
-        <img src="" alt="" class="h-48 w-48 rounded-full">
+        <img src="https://avatars.githubusercontent.com/u/26599685?v=4" alt="" class="h-48 w-48 rounded-full">
         <h3 class="pb-2 pt-4 text-2xl font-bold leading-8 tracking-tight">
-          Lucas Brandao Plaster
+          BrandaoPlaster
         </h3>
         <span class="text-gray-500 dark:text-gray-400">
           Software Engineer
