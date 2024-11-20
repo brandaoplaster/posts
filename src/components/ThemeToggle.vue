@@ -1,12 +1,12 @@
 <script lang="ts">
-import { MoonIcon, SunIcon } from "@heroicons/vue/20/solid";
 import { ref, onMounted } from "vue";
+import MdiIcon from "./MdiIcon.vue";
+import { mdiWeatherSunny, mdiWeatherNight } from '@mdi/js';
 
 export default {
   name: "ThemeToggle",
   components: {
-    SunIcon,
-    MoonIcon,
+   MdiIcon
   },
   setup() {
     const isDark = ref(false);
@@ -22,7 +22,7 @@ export default {
       document.documentElement.classList.toggle("dark", isDark.value);
     });
 
-    return { isDark, toggleTheme };
+    return { isDark, toggleTheme, mdiWeatherSunny, mdiWeatherNight };
   },
 };
 </script>
@@ -34,10 +34,10 @@ export default {
     class="p-2 rounded focus:outline-none"
   >
     <span v-if="isDark">
-      <SunIcon class="w-6 h-6 text-yellow-500" />
+      <MdiIcon :icon="mdiWeatherSunny" size="32" color="yellow" />
     </span>
     <span v-else>
-      <MoonIcon class="w-6 h-6 text-gray-800" />
+      <MdiIcon :icon="mdiWeatherNight" size="32" color="black" />
     </span>
   </button>
 </template>
