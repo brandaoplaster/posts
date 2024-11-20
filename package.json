@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@heroicons/vue": "^2.1.5",
+    "@mdi/js": "^7.4.47",
     "@tailwindcss/typography": "^0.5.15",
     "marked": "^15.0.0",
     "pinia": "^2.2.6",
