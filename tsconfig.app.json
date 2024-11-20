@@ -13,7 +13,8 @@
     "isolatedModules": true,
     "moduleDetection": "force",
     "noEmit": true,
-    "jsx": "preserve",
+    // "jsx": "preserve",
+    "types": ["vite/client", "vue"],
 
     /* Linting */
     "strict": true,
