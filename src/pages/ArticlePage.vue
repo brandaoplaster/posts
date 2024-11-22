@@ -1,38 +1,58 @@
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue';
-import { Article } from '../types/article';
+import { ref, onMounted, computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { marked } from 'marked';
-import LeftAside from "../components/LeftAside.vue";
+import { useArticleStore } from '../store/articles';
+import { Article } from '../types/article';
+import LeftAside from '../components/LeftAside.vue';
 
+const content = ref<string>('');
 const article = ref<Article | null>(null);
-const articles = ref<Article[]>([]);
+const error = ref<string | null>(null);
 const route = useRoute();
-const content = ref('');
+const articleStore = useArticleStore();
+
 const computedCategories = computed(() => article.value?.categories ?? []);
 
-onMounted(async () => {
-  const articleId = Number(route.params.id);
+async function fetchArticleById(articleId: number): Promise<Article> {
+  if (!articleStore.articles.length) {
+    await articleStore.loadArticles();
+  }
 
+  const foundArticle = articleStore.getPostById(articleId) as Article | undefined;
+  if (!foundArticle) {
+    throw new Error('Artigo não encontrado.');
+  }
+
+  return foundArticle;
+}
+
+async function fetchMarkdown(path: string): Promise<string> {
+  const response = await fetch(path);
+  if (!response.ok) {
+    throw new Error(`Erro ao carregar Markdown: ${response.statusText}`);
+  }
+  return marked(await response.text());
+}
+
+async function initializePage(): Promise<void> {
   try {
-    const response = await fetch("/posts/data.json");
-    articles.value = await response.json();
-
-    article.value = articles.value.find((item: Article) => item.id === articleId) || null;
-
-    if (article.value) {
-      const markdownResponse = await fetch(article.value.path);
-      if (!markdownResponse.ok) throw new Error(`Erro ao carregar Markdown: ${markdownResponse.statusText}`);
-
-      const markdownText = await markdownResponse.text();
-
-      content.value = await marked(markdownText);
+    const articleId = Number(route.params.id);
+    if (isNaN(articleId)) {
+      throw new Error('ID de artigo inválido.');
     }
 
-  } catch (error) {
-    console.log("Error", error);
+    article.value = await fetchArticleById(articleId);
+
+    content.value = await fetchMarkdown(article.value.path);
+  } catch (err) {
+    console.error(err);
+    error.value = (err as Error).message;
   }
-})
+}
+
+onMounted(initializePage);
+
 </script>
 
 <template>
