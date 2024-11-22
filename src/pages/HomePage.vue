@@ -43,19 +43,14 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
-import { Article } from "../types/article";
+import { computed, onMounted } from "vue";
+import { useArticleStore } from "../store/articles";
 
-const articles = ref<Article[]>([]);
+const articleStore = useArticleStore();
 
 onMounted(async () => {
-  try {
-    const response = await fetch("data.json");
-    console.log(response)
-    articles.value = await response.json();
-    console.log(articles)
-  } catch (error) {
-    console.error("Erro ao carregar o JSON:", error);
-  }
+  await articleStore.loadArticles();
 });
+
+const articles = computed(() => articleStore.articles);
 </script>

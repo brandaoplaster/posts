@@ -8,7 +8,6 @@ export default {
   components: { BackButton },
   name: "LeftAside",
   setup(props: { categories: Category[] }) {
-    console.log("hi");
     return { ...props };
   },
   props: {
