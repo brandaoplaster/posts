@@ -1,35 +1,34 @@
-[
-  {
-    "id": 1,
-    "title": "First Article",
-    "summary": "This article introduces the basics of Vue 3 and how to get started with it.",
-    "path": "/posts/public/content/post_1.md",
-    "publishedAt": "2024-01-01",
-    "categories": [
-      { "name": "Vue.js" },
-      { "name": "JavaScript" }
-    ]
-  },
-  {
-    "id": 2,
-    "title": "Second Article",
-    "summary": "Learn how TypeScript can improve your frontend development and integrate it with Vue.",
-    "path": "article2.md",
-    "publishedAt": "2024-01-05",
-    "categories": [
-      { "name": "Vue.js" },
-      { "name": "JavaScript" }
-    ]
-  },
-  {
-    "id": 3,
-    "title": "3 Article",
-    "summary": "Learn how TypeScript can improve your frontend development and integrate it with Vue.",
-    "path": "article2.md",
-    "publishedAt": "2024-01-05",
-    "categories": [
-      { "name": "Elixir" },
-      { "name": "Docker" }
-    ]
-  }
-]
+{
+  "articles": [
+    {
+      "id": 1,
+      "title": "First Article",
+      "summary": "This article introduces the basics of Vue 3 and how to get started with it.",
+      "path": "/posts/public/content/post_1.md",
+      "publishedAt": "2024-01-01",
+      "categories": [{ "name": "Vue.js" }, { "name": "JavaScript" }]
+    },
+    {
+      "id": 2,
+      "title": "Second Article",
+      "summary": "Learn how TypeScript can improve your frontend development and integrate it with Vue.",
+      "path": "article2.md",
+      "publishedAt": "2024-01-05",
+      "categories": [{ "name": "Vue.js" }, { "name": "JavaScript" }]
+    },
+    {
+      "id": 3,
+      "title": "3 Article",
+      "summary": "Learn how TypeScript can improve your frontend development and integrate it with Vue.",
+      "path": "article2.md",
+      "publishedAt": "2024-01-05",
+      "categories": [{ "name": "Elixir" }, { "name": "Docker" }]
+    }
+  ],
+  "categories": [
+    "Vue.js",
+    "JavaScript",
+    "Ruby on Rails",
+    "Elixir"
+  ]
+}
