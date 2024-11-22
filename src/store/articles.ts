@@ -9,7 +9,7 @@ export const useArticleStore = defineStore('article', {
   actions: {
     async loadArticles(): Promise<void> {
       try {
-        const response = await fetch('/data.json');
+        const response = await fetch('/posts/data.json');
         if (!response.ok) {
           throw new Error('Failed to fetch data');
         }
