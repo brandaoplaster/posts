@@ -26,9 +26,9 @@
     }
   ],
   "categories": [
-    "Vue.js",
-    "JavaScript",
-    "Ruby on Rails",
-    "Elixir"
+    { "name": "Vue.js"},
+    { "name": "JavaScript"},
+    { "name": "Ruby on Rails"},
+    { "name": "Elixir"}
   ]
 }
