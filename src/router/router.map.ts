@@ -1,6 +1,7 @@
 import HomePage from "../pages/HomePage.vue";
 import ArticlePage from "../pages/ArticlePage.vue";
 import AboutPage from "../pages/AboutPage.vue";
+import CategoryPage from "../pages/CategoryPage.vue";
 
 export default [
   {
@@ -17,5 +18,10 @@ export default [
     path: "/about",
     name: "about",
     component: AboutPage
+  },
+  {
+    path: "/categories",
+    name: "categories",
+    component: CategoryPage
   }
 ];
