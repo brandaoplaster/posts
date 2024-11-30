@@ -1,44 +1,44 @@
 <script lang="ts">
-import ThemeToggle from './ThemeToggle.vue';
+import { mdiBalloon } from "@mdi/js";
+import ThemeToggle from "./ThemeToggle.vue";
+import MdiIcon from "./MdiIcon.vue";
+import { onMounted, ref, watchEffect } from "vue";
 
 export default {
   name: "MainHeader",
   components: {
-    ThemeToggle
+    ThemeToggle,
+    MdiIcon,
   },
   setup() {
+    const iconColor = ref("black");
+
+    const updateIconColor = () => {
+      iconColor.value = document.documentElement.classList.contains("dark")
+        ? "white"
+        : "black";
+    };
+
+    onMounted(() => {
+      updateIconColor();
+      watchEffect(updateIconColor);
+    });
+
+    return { mdiBalloon, iconColor };
   },
-}
+};
 </script>
 
 <template>
   <header
     class="fixed top-0 left-0 h-20 w-full z-50 bg-white dark:bg-gray-950 flex items-center justify-between py-4 px-8 shadow-md">
-    <a class="break-words" aria-label="TailwindBlog" href="/">
+    <a class="break-words" aria-label="logo" href="/">
       <div class="flex items-center justify-between">
-        <div class="mr-3">
-          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="53.87"
-            height="43.61" viewBox="344.564 330.278 111.737 91.218">
-            <defs>
-              <linearGradient id="logo_svg__b" x1="420.97" x2="420.97" y1="331.28" y2="418.5"
-                gradientUnits="userSpaceOnUse">
-                <stop offset="0%" style="stop-color: #06b6d4; stop-opacity: 1"></stop>
-                <stop offset="100%" style="stop-color: #67e8f9; stop-opacity: 1"></stop>
-              </linearGradient>
-              <linearGradient id="logo_svg__d" x1="377.89" x2="377.89" y1="331.28" y2="418.5"
-                gradientUnits="userSpaceOnUse">
-                <stop offset="0%" style="stop-color: #06b6d4; stop-opacity: 1"></stop>
-                <stop offset="100%" style="stop-color: #67e8f9; stop-opacity: 1"></stop>
-              </linearGradient>
-              <path id="logo_svg__a" d="M453.3 331.28v28.57l-64.66 58.65v-30.08z"></path>
-              <path id="logo_svg__c" d="M410.23 331.28v28.57l-64.67 58.65v-30.08z"></path>
-            </defs>
-            <use xlink:href="#logo_svg__a" fill="url(#logo_svg__b)"></use>
-            <use xlink:href="#logo_svg__c" fill="url(#logo_svg__d)"></use>
-          </svg>
+        <div class="mr-3 text-text-dark">
+          <MdiIcon :icon="mdiBalloon" size="32" color="iconColor" />
         </div>
-        <div class="hidden h-6 text-2xl font-semibold sm:block">
-          BrandaoPlaster
+        <div class="hidden h-6 text-2xl text-text-dark font-semibold sm:block">
+          My Posts
         </div>
       </div>
     </a>
@@ -46,13 +46,17 @@ export default {
       <div
         class="no-scrollbar hidden max-w-40 items-center space-x-4 overflow-x-auto sm:flex sm:space-x-6 md:max-w-72 lg:max-w-96">
         <a class="block font-medium text-gray-900 hover:text-primary-500 dark:text-gray-100 dark:hover:text-primary-400"
-          href="/blog">Blog</a><a
+          href="/blog">
+          Blog
+        </a><a
           class="block font-medium text-gray-900 hover:text-primary-500 dark:text-gray-100 dark:hover:text-primary-400"
-          href="/tags">Tags</a><a
-          class="block font-medium text-gray-900 hover:text-primary-500 dark:text-gray-100 dark:hover:text-primary-400"
-          href="/projects">Projects</a><a
-          class="block font-medium text-gray-900 hover:text-primary-500 dark:text-gray-100 dark:hover:text-primary-400"
-          href="/about">About</a>
+          href="/tags">
+          Tags
+        </a>
+        <a class="block font-medium text-gray-900 hover:text-primary-500 dark:text-gray-100 dark:hover:text-primary-400"
+          href="/about">
+          About
+        </a>
       </div>
       <button aria-label="Search">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
