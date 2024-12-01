@@ -45,10 +45,12 @@
 <script setup lang="ts">
 import { computed, onMounted } from "vue";
 import { useArticleStore } from "../store/articles";
+import { useTitle } from "../composables/useTitle";
 
 const articleStore = useArticleStore();
 
 onMounted(async () => {
+  useTitle("Home - My Posts");
   await articleStore.loadArticles();
 });
 
