@@ -31,7 +31,7 @@ export default {
 
 <template>
   <header
-    class="fixed top-0 left-0 h-20 w-full z-50 bg-white dark:bg-gray-950 flex items-center justify-between py-4 px-8 shadow-md">
+    class="fixed top-0 left-0 h-20 w-full z-50 bg-white dark:bg-gray-950 border-b dark:border-gray-700 flex items-center justify-between py-4 px-8 shadow-md">
     <a class="break-words" aria-label="logo" href="/">
       <div class="flex items-center justify-between">
         <div class="mr-3 text-text-dark">
