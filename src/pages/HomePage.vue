@@ -6,7 +6,7 @@
         <article>
           <div class="space-y-2 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">
             <div class="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
-              {{ article.publishedAt }}
+              {{ formatDate(article.publishedAt) }}
             </div>
             <div class="space-y-5 xl:col-span-3">
               <div class="space-y-6">
@@ -46,8 +46,10 @@
 import { computed, onMounted } from "vue";
 import { useArticleStore } from "../store/articles";
 import { useTitle } from "../composables/useTitle";
+import { useDateFormatter } from "../composables/useDateFormatter";
 
 const articleStore = useArticleStore();
+const { formatDate } = useDateFormatter();
 
 onMounted(async () => {
   useTitle("Home - My Posts");
