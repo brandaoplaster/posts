@@ -21,6 +21,26 @@ export default {
           dark: "var(--color-text-dark)",
         },
       },
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            color: theme('colors.text.dark'),
+            h1: { color: theme('colors.primary.dark') },
+            h2: { color: theme('colors.primary.dark') },
+            h3: { color: theme('colors.primary.dark') },
+            a: { color: theme('colors.primary.dark') },
+          },
+        },
+        dark: {
+          css: {
+            color: theme('colors.text.light'),
+            h1: { color: theme('colors.primary.light') },
+            h2: { color: theme('colors.primary.light') },
+            h3: { color: theme('colors.primary.light') },
+            a: { color: theme('colors.primary.light') },
+          },
+        },
+      }),
     },
   },
   plugins: [
