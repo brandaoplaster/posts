@@ -24,6 +24,7 @@ export default {
       typography: (theme) => ({
         DEFAULT: {
           css: {
+            '--tw-prose-headings': theme('colors.primary.DEFAULT'),
             color: theme('colors.text.dark'),
             h1: { color: theme('colors.primary.dark') },
             h2: { color: theme('colors.primary.dark') },
@@ -53,6 +54,7 @@ export default {
         },
         dark: {
           css: {
+            '--tw-prose-headings': theme('colors.primary.light'),
             color: theme('colors.text.light'),
             h1: { color: theme('colors.primary.light') },
             h2: { color: theme('colors.primary.light') },
