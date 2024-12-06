@@ -2,11 +2,11 @@
   "articles": [
     {
       "id": 1,
-      "title": "First Article",
+      "title": "Introdução Ruby on Rails 8",
       "summary": "This article introduces the basics of Vue 3 and how to get started with it.",
-      "path": "/posts/public/content/post_1.md",
+      "path": "/posts/content/post_1.md",
       "publishedAt": "2024-01-01",
-      "categories": [{ "name": "Vue.js" }, { "name": "JavaScript" }]
+      "categories": [{ "name": "Ruby" }, { "name": "Ruby on Rails" }]
     },
     {
       "id": 2,
