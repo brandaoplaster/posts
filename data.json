@@ -10,11 +10,11 @@
     },
     {
       "id": 2,
-      "title": "Second Article",
-      "summary": "Learn how TypeScript can improve your frontend development and integrate it with Vue.",
+      "title": "Extenções para Elixir no vscode",
+      "summary": "Principais extenções para usar no vscode para desenvolver com Elixir.",
       "path": "article2.md",
-      "publishedAt": "2024-01-05",
-      "categories": [{ "name": "Vue.js" }, { "name": "JavaScript" }]
+      "publishedAt": "2024-12-06",
+      "categories": [{ "name": "Elixir" }]
     },
     {
       "id": 3,
