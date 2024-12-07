@@ -1,54 +1,100 @@
-# Introdução ao Ruby on Rails 8
+# Extensões do VSCode que Facilitam o Desenvolvimento em Elixir
 
-Ruby on Rails (ou simplesmente Rails) é um framework web que ajuda desenvolvedores a construir aplicações web de forma rápida e eficiente. Ele foi desenvolvido em Ruby e segue o padrão **MVC** (Model-View-Controller), promovendo a organização do código e a manutenção de aplicações ao longo do tempo.
+Ter boas ferramentas configuradas no editor faz toda a diferença no dia a dia de desenvolvimento. Minha listar com três extensões do VSCode que utilizo regularmente e que me auxiliam no trabalho com Elixir. Cada uma possui uma utilidade específica, e vou apresentar uma breve explicação sobre elas, além de como estão configuradas no meu ambiente.
 
-Rails oferece uma estrutura robusta para construir desde pequenos sites a aplicações de grande porte, usando convenções ao invés de configurações complexas. A seguir, exploraremos os fundamentos dessa tecnologia e o que há de novo na versão 8.
+- ElixirLS: Elixir support and debugger - [Link](https://marketplace.visualstudio.com/items?itemName=JakeBecker.elixir-ls)
+- Phoenix Framework - [Link](https://marketplace.visualstudio.com/items?itemName=phoenixframework.phoenix)
+- Elixir snippets - [Link](https://marketplace.visualstudio.com/items?itemName=florinpatrascu.vscode-elixir-snippets)
 
-## O que é o Ruby on Rails?
+Uma breve explicação para que serve cada extensão.
 
-Rails é um framework que acelera o processo de desenvolvimento de aplicações web, automatizando tarefas comuns como manipulação de banco de dados, gerenciamento de rotas e validações de dados. Ele permite que desenvolvedores foquem mais nas funcionalidades e menos nas configurações básicas do sistema.
+A extensão ElixirLS: Elixir support and debugger for VS Code oferece suporte completo ao desenvolvimento em Elixir no VSCode. Inclui IntelliSense, autocompletar e formatação de código com mix format, além de diagnóstico de erros em tempo real. Permite depuração avançada com breakpoints e execução passo a passo, além de navegação fácil no código (ir para definições e referências). Também suporta execução de testes diretamente no editor, tornando o workflow mais eficiente.
 
-### Principais Características
+A extensão Phoenix Framework para VSCode melhora a experiência ao trabalhar com projetos Phoenix. Ela oferece destaque de sintaxe para arquivos .eex e .heex, autocompletar para helpers e atalhos de templates, além de suporte básico à estrutura de pastas do framework. Facilita a navegação entre controllers, views e templates, otimizando o desenvolvimento de aplicações web em Elixir.
 
-1. **MVC (Model-View-Controller)**: Segrega a lógica de negócio, a interface de usuário e o controle de entrada, tornando o código mais limpo e organizado.
-2. **DRY (Don't Repeat Yourself)**: Rails incentiva a reutilização de código, reduzindo a repetição de tarefas.
-3. **Convenção sobre Configuração**: Define padrões e convenções para que o desenvolvedor precise configurar o mínimo possível.
+A extensão Elixir Snippets fornece atalhos para snippets de código prontos, agilizando o desenvolvimento em Elixir. Inclui templates para funções comuns, módulos, testes, pipelines e muito mais, permitindo gerar rapidamente estruturas repetitivas. É útil para seguir padrões de código e aumentar a produtividade, especialmente para quem escreve código Elixir com frequência.
 
-## O que há de novo no Rails 8?
+O **Emmet** no VSCode é uma ferramenta integrada que facilita a escrita de código HTML, CSS e outras linguagens relacionadas a front-end. Ele permite expandir abreviações curtas em blocos completos de código. Vamos usar para pode habilita alguns recursos para Phoenix e LiveView.
 
-O Ruby on Rails 8 traz várias melhorias e novas funcionalidades que aprimoram a performance e a experiência de desenvolvimento. Alguns dos destaques incluem:
+## Configurando
 
-- **Melhorias de Performance**: Rails 8 foca em otimizar a execução de código e reduzir a latência nas aplicações web.
-- **Integração com IA e Machine Learning**: Novas ferramentas e bibliotecas para facilitar a integração de IA e ML nas aplicações.
-- **Suporte a SPA (Single-Page Applications)**: Suporte aprimorado para criação de SPAs diretamente com Rails, simplificando o desenvolvimento de interfaces interativas.
-- **Turbo e Stimulus**: Ferramentas para construir aplicações dinâmicas sem precisar de frameworks de front-end complexos.
+Essas configurações podem ser aplicadas no **settings.json** do vscode. É uma configuração simples que gosto de usar, mas que pode ser alterada sem problemas, por exemplo caso queira exibição da assinatura da função logo após autocompletar.
 
-## Por que usar Ruby on Rails?
-
-Rails é ideal para desenvolvedores que buscam produtividade e rapidez no desenvolvimento de aplicações web. Além disso, o framework é altamente **escalável**, tornando-se uma boa escolha para startups e grandes empresas.
-
-### Vantagens do Rails 8:
-
-- **Agilidade no Desenvolvimento**: Com uma grande quantidade de bibliotecas e gemas, o Rails permite implementar funcionalidades rapidamente.
-- **Comunidade Ativa**: Rails possui uma comunidade grande e ativa, o que significa mais recursos, suporte e atualizações constantes.
-- **Segurança**: O Rails vem com várias configurações de segurança padrão, protegendo aplicações contra ataques comuns, como SQL Injection e XSS.
-
-## Começando com Rails 8
-
-Para instalar e iniciar um projeto com Ruby on Rails 8, você pode seguir os passos abaixo:
-
-```bash
-# Instale o Rails (caso não esteja instalado)
-gem install rails
-
-# Crie um novo projeto Rails
-rails new meu_projeto
-
-# Acesse o diretório do projeto
-cd meu_projeto
-
-# Inicie o servidor local
-rails server
+```
+"elixirLS.suggestSpecs": false,
+"elixirLS.dialyzerEnabled": true,
+"elixirLS.signatureAfterComplete": false,
+"elixirLS.fetchDeps": false,
+"files.associations": {
+  "*.heex": "phoenix-heex"
+},
+"[elixir]": {
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "JakeBecker.elixir-ls"
+},
+"[phoenix-heex]": {
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "JakeBecker.elixir-ls"
+},
+"emmet.includeLanguages": {
+  "elixir": "html",
+  "phoenix-heex": "html"
+},
+"emmet.triggerExpansionOnTab": true,
 ```
 
-Agora, sua aplicação está disponível em http://localhost:3000 e pronta para o desenvolvimento!
+Uma breve explicação do bloco de configuração do settings.json
+
+"elixirLS.suggestSpecs": false
+
+- Desativa sugestões automáticas para especificações de tipo (specs) no Elixir.
+- Útil se você não quer ser constantemente lembrado de adicionar @spec em funções.
+
+"elixirLS.dialyzerEnabled": true
+
+- Habilita o Dialyzer, que é uma ferramenta de análise estática para encontrar erros em código Elixir.
+- Pode melhorar a detecção de problemas, mas aumenta o consumo de recursos.
+
+"elixirLS.signatureAfterComplete": false
+
+- Desativa a exibição da assinatura da função logo após autocompletar.
+- Pode ser útil para evitar distrações.
+
+"elixirLS.fetchDeps": false
+
+- Impede que o ElixirLS faça o download automático de dependências ao iniciar o projeto.
+- Útil se você preferir gerenciar isso manualmente com mix deps.get.
+
+"files.associations": { "\*.heex": "phoenix-heex" }
+
+- Associa arquivos com a extensão .heex ao tipo phoenix-heex, garantindo suporte de syntax highlight e formatação para templates Phoenix.
+
+"[elixir]": { ... }
+Configurações aplicadas a arquivos .ex e .exs
+
+"editor.formatOnSave": true
+
+- Formata o código automaticamente ao salvar.
+  "editor.defaultFormatter": "JakeBecker.elixir-ls"
+- Define o ElixirLS como o formatador padrão.
+
+"[phoenix-heex]": { ... }
+
+Configurações para arquivos .heex:
+"editor.formatOnSave": true:
+
+- Formata automaticamente templates Phoenix ao salvar.
+
+"editor.defaultFormatter": "JakeBecker.elixir-ls":
+
+- Usa o ElixirLS para formatar.
+
+"emmet.includeLanguages": { "elixir": "html", "phoenix-heex": "html" }
+
+- Habilita o Emmet para arquivos .ex, .heex ou código embutido em HTML, como no Phoenix.
+- Permite usar abreviações como div>ul>li\*3 e expandi-las em HTML.
+
+"emmet.triggerExpansionOnTab": true
+
+- Ativa a expansão de snippets Emmet ao pressionar a tecla Tab.
+- Facilita o uso de atalhos, como m10 para gerar margin: 10px;.

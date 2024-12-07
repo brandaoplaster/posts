@@ -2,11 +2,11 @@
   "articles": [
     {
       "id": 1,
-      "title": "First Article",
+      "title": "Extensões do VSCode que Facilitam o Desenvolvimento em Elixir",
       "summary": "This article introduces the basics of Vue 3 and how to get started with it.",
-      "path": "/posts/public/content/post_1.md",
-      "publishedAt": "2024-01-01",
-      "categories": [{ "name": "Vue.js" }, { "name": "JavaScript" }]
+      "path": "/public/content/post_1.md",
+      "publishedAt": "2024-12-07",
+      "categories": [{ "name": "Elixir" }, { "name": "Editor" }]
     },
     {
       "id": 2,
