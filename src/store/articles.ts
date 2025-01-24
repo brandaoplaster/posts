@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { Article } from "../types/article";
+import { Article, ArticleStatus } from "../types/article";
 
 export const useArticleStore = defineStore('article', {
   state: () => ({
@@ -7,14 +7,14 @@ export const useArticleStore = defineStore('article', {
   }),
 
   actions: {
-    async loadArticles(): Promise<void> {
+    async loadArticles(status: ArticleStatus): Promise<void> {
       try {
         const response = await fetch('/posts/data.json');
         if (!response.ok) {
           throw new Error('Failed to fetch data');
         }
         const data = await response.json();
-        this.articles = data.articles;
+        this.articles = data.articles.filter((article: Article) => article.status === status);
       } catch (error) {
         console.error('Error loading articles:', error);
       }

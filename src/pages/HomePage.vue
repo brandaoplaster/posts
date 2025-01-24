@@ -53,7 +53,7 @@ const { formatDate } = useDateFormatter();
 
 onMounted(async () => {
   useTitle("Home - My Posts");
-  await articleStore.loadArticles();
+  await articleStore.loadArticles("published");
 });
 
 const articles = computed(() => articleStore.articles);

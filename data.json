@@ -6,7 +6,8 @@
       "summary": "This article introduces the basics of Vue 3 and how to get started with it.",
       "path": "/posts/public/content/post_1.md",
       "publishedAt": "2024-01-01",
-      "categories": [{ "name": "Vue.js" }, { "name": "JavaScript" }]
+      "categories": [{ "name": "Vue.js" }, { "name": "JavaScript" }],
+      "status": "published"
     },
     {
       "id": 2,
@@ -14,7 +15,8 @@
       "summary": "Principais extenções para usar no vscode para desenvolver com Elixir.",
       "path": "article2.md",
       "publishedAt": "2024-12-06",
-      "categories": [{ "name": "Elixir" }]
+      "categories": [{ "name": "Elixir" }],
+      "status": "draft"
     },
     {
       "id": 3,
@@ -22,7 +24,8 @@
       "summary": "Learn how TypeScript can improve your frontend development and integrate it with Vue.",
       "path": "article2.md",
       "publishedAt": "2024-01-05",
-      "categories": [{ "name": "Elixir" }, { "name": "Docker" }]
+      "categories": [{ "name": "Elixir" }, { "name": "Docker" }],
+      "status": "archived"
     }
   ],
   "categories": [
