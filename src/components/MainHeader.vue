@@ -45,18 +45,14 @@ export default {
     <div class="flex items-center space-x-4 leading-5 sm:space-x-6">
       <div
         class="no-scrollbar hidden max-w-40 items-center space-x-4 overflow-x-auto sm:flex sm:space-x-6 md:max-w-72 lg:max-w-96">
-        <a class="block font-medium text-gray-900 hover:text-primary-500 dark:text-gray-100 dark:hover:text-primary-400"
-          href="/blog">
-          Blog
-        </a><a
-          class="block font-medium text-gray-900 hover:text-primary-500 dark:text-gray-100 dark:hover:text-primary-400"
-          href="/tags">
+        <router-link :to="{ name: 'category', params: { categoryName: 'posts' } }"
+          class="block font-medium text-gray-900 hover:text-primary-500 dark:text-gray-100 dark:hover:text-primary-400">
           Tags
-        </a>
-        <a class="block font-medium text-gray-900 hover:text-primary-500 dark:text-gray-100 dark:hover:text-primary-400"
-          href="/about">
+        </router-link>
+        <router-link :to="{ name: 'about' }"
+          class="block font-medium text-gray-900 hover:text-primary-500 dark:text-gray-100 dark:hover:text-primary-400">
           About
-        </a>
+        </router-link>
       </div>
       <button aria-label="Search">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
