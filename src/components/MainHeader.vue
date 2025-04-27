@@ -32,7 +32,7 @@ export default {
 <template>
   <header
     class="fixed top-0 left-0 h-20 w-full z-50 bg-white dark:bg-gray-950 border-b dark:border-gray-700 flex items-center justify-between py-4 px-8 shadow-md">
-    <a class="break-words" aria-label="logo" href="/">
+    <router-link :to="'/'" class="break-words" aria-label="logo">
       <div class="flex items-center justify-between">
         <div class="mr-3 text-text-dark">
           <MdiIcon :icon="mdiBalloon" size="32" color="iconColor" />
@@ -41,7 +41,7 @@ export default {
           My Posts
         </div>
       </div>
-    </a>
+    </router-link>
     <div class="flex items-center space-x-4 leading-5 sm:space-x-6">
       <div
         class="no-scrollbar hidden max-w-40 items-center space-x-4 overflow-x-auto sm:flex sm:space-x-6 md:max-w-72 lg:max-w-96">
