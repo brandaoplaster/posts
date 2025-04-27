@@ -18,7 +18,7 @@ const computedCategories = computed(() => article.value?.categories ?? []);
 
 async function fetchArticleById(articleId: number): Promise<Article> {
   if (!articleStore.articles.length) {
-    await articleStore.loadArticles();
+    await articleStore.loadArticles("published");
   }
 
   const foundArticle = articleStore.getPostById(articleId) as Article | undefined;

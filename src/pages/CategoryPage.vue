@@ -6,7 +6,7 @@ import RightAside from "../components/RightAside.vue";
 const articleStore = useArticleStore();
 
 onMounted(async () => {
-  await articleStore.loadArticles();
+  await articleStore.loadArticles("published");
 });
 
 const articles = computed(() => articleStore.articles);
