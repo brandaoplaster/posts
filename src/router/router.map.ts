@@ -20,8 +20,8 @@ export default [
     component: AboutPage
   },
   {
-    path: "/categories",
-    name: "categories",
+    path: '/category/:categoryName',
+    name: "category",
     component: CategoryPage
   }
 ];

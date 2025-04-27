@@ -29,10 +29,10 @@ export default {
         </h2>
         <div class="flex flex-wrap">
           <div v-for="category in categories" :key="category.name" class="mr-3">
-            <a href="#"
+            <router-link :to="{ name: 'category', params: { categoryName: category.name } }"
               class="text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
               {{ category.name }}
-            </a>
+            </router-link>
           </div>
         </div>
       </div>

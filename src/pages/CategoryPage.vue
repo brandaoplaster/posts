@@ -1,15 +1,44 @@
 <script setup lang="ts">
-import { computed, onMounted } from "vue";
 import { useArticleStore } from "../store/articles";
 import RightAside from "../components/RightAside.vue";
+import { useRoute } from "vue-router";
+import { computed, onMounted, ref, watch } from "vue";
+import { Article } from "../types/article";
 
 const articleStore = useArticleStore();
+const route = useRoute();
+const categoryName = computed(() => route.params.categoryName as string);
 
-onMounted(async () => {
-  await articleStore.loadArticles();
+const articles = ref<Article[]>([]);
+const isLoading = ref(false);
+const errorMessage = ref<string | null>(null);
+
+const loadArticles = async () => {
+  isLoading.value = true;
+  errorMessage.value = null;
+  try {
+    if (articleStore.articles.length === 0) {
+      await articleStore.loadArticles("published");
+    }
+    articles.value = articleStore.getArticlesByCategory(categoryName.value);
+  } catch (error) {
+    errorMessage.value = 'Erro ao carregar posts';
+    console.log(error)
+  } finally {
+    isLoading.value = false
+  }
+}
+
+onMounted(() => {
+  loadArticles();
 });
 
-const articles = computed(() => articleStore.articles);
+watch(
+  () => route.params.categoryName,
+  () => {
+    loadArticles();
+  }
+)
 </script>
 
 <template>
@@ -17,6 +46,13 @@ const articles = computed(() => articleStore.articles);
     <RightAside />
     <div class="divide-y divide-gray-200 dark:divide-gray-700 pt-6">
       <h1 class="text-2xl font-bold mb-4">Lista de Artigos</h1>
+      <div v-if="isLoading" class="loading">Carregando...</div>
+
+      <div v-else-if="error" class="error">{{ error }}</div>
+
+      <div v-else-if="!isLoading && articles.length === 0" class="no-posts">
+        Nenhum post encontrado para a categoria "{{ categoryName }}".
+      </div>
       <ul class="divide-y divide-gray-200 dark:divide-gray-700">
         <li v-for="article in articles" :key="article.title" class="py-12">
           <article>
@@ -33,10 +69,10 @@ const articles = computed(() => articleStore.articles);
                     </h2>
                     <div class="flex flex-wrap">
                       <div v-for="category in article.categories" :key="category.name" class="mr-3">
-                        <a href="#"
+                        <router-link :to="{ name: 'category', params: { categoryName: category.name } }"
                           class="text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
                           {{ category.name }}
-                        </a>
+                        </router-link>
                       </div>
                     </div>
                   </div>
