@@ -2,19 +2,21 @@
   "articles": [
     {
       "id": 1,
-      "title": "Introdução Ruby on Rails 8",
+      "title": "First Article",
       "summary": "This article introduces the basics of Vue 3 and how to get started with it.",
-      "path": "/posts/content/post_1.md",
+      "path": "/posts/public/content/post_1.md",
       "publishedAt": "2024-01-01",
-      "categories": [{ "name": "Ruby" }, { "name": "Ruby on Rails" }]
+      "categories": [{ "name": "Vue.js" }, { "name": "JavaScript" }],
+      "status": "published"
     },
     {
       "id": 2,
-      "title": "Second Article",
-      "summary": "Learn how TypeScript can improve your frontend development and integrate it with Vue.",
+      "title": "Extenções para Elixir no vscode",
+      "summary": "Principais extenções para usar no vscode para desenvolver com Elixir.",
       "path": "article2.md",
-      "publishedAt": "2024-01-05",
-      "categories": [{ "name": "Vue.js" }, { "name": "JavaScript" }]
+      "publishedAt": "2024-12-06",
+      "categories": [{ "name": "Elixir" }],
+      "status": "draft"
     },
     {
       "id": 3,
@@ -22,7 +24,8 @@
       "summary": "Learn how TypeScript can improve your frontend development and integrate it with Vue.",
       "path": "article2.md",
       "publishedAt": "2024-01-05",
-      "categories": [{ "name": "Elixir" }, { "name": "Docker" }]
+      "categories": [{ "name": "Elixir" }, { "name": "Docker" }],
+      "status": "archived"
     }
   ],
   "categories": [
