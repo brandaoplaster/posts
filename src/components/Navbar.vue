@@ -2,10 +2,10 @@
   import ThemeToggle from './ThemeToggle.vue';
 
   export default {
-  name: "NavBar",
-  components: {
-    ThemeToggle
-  }
+    name: "NavBar",
+    components: {
+      ThemeToggle
+    }
   }
 </script>
 
