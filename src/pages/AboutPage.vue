@@ -50,7 +50,25 @@
       </div>
 
       <div class="prose max-w-none pb-8 pt-8 dark:prose-invert xl:col-span-2">
-        <p>About description</p>
+        <p>
+          Desenvolvedor de software há quase uma década, já rodei por diferentes
+          tecnologias, projetos e contextos. Hoje meu foco está em Ruby on
+          Rails, Elixir e Vue.js, mas mais do que empilhar ferramentas, meu
+          interesse sempre foi entender como a tecnologia resolve problemas de
+          verdade — sem glamour, sem mágica.
+        </p>
+        <p>
+          Fora da tecnologia, passei 3 anos viajando como nômade pelo Brasil,
+          buscando experiências fora da rotina e conhecendo diferentes
+          realidades. Vivi em cidades que muitas pessoas nem sabem que existem,
+          conheci pessoas incríveis e aprendi que estar em movimento muda tudo —
+          na vida e no trabalho.
+        </p>
+        <p>
+          No meio das minhas viagens, comecei a tirar fotos de paisagens e
+          encontrei um hobby. Estudei fotografia para aprender mais e isso
+          acabou se tornando um passatempo que cultivo até hoje.
+        </p>
       </div>
     </div>
   </div>
