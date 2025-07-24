@@ -3,12 +3,14 @@ import { mdiBalloon } from "@mdi/js";
 import ThemeToggle from "./ThemeToggle.vue";
 import MdiIcon from "./MdiIcon.vue";
 import { onMounted, ref, watchEffect } from "vue";
+import SearchButton from "./SearchButton.vue";
 
 export default {
   name: "MainHeader",
   components: {
     ThemeToggle,
     MdiIcon,
+    SearchButton,
   },
   setup() {
     const iconColor = ref("black");
@@ -31,7 +33,8 @@ export default {
 
 <template>
   <header
-    class="fixed top-0 left-0 h-20 w-full z-50 bg-white dark:bg-gray-950 border-b dark:border-gray-700 flex items-center justify-between py-4 px-8 shadow-md">
+    class="fixed top-0 left-0 h-20 w-full z-50 bg-white dark:bg-gray-950 border-b dark:border-gray-700 flex items-center justify-between py-4 px-8 shadow-md"
+  >
     <router-link :to="'/'" class="break-words" aria-label="logo">
       <div class="flex items-center justify-between">
         <div class="mr-3 text-text-dark">
@@ -44,23 +47,22 @@ export default {
     </router-link>
     <div class="flex items-center space-x-4 leading-5 sm:space-x-6">
       <div
-        class="no-scrollbar hidden max-w-40 items-center space-x-4 overflow-x-auto sm:flex sm:space-x-6 md:max-w-72 lg:max-w-96">
-        <router-link :to="{ name: 'category', params: { categoryName: 'posts' } }"
-          class="block font-medium text-gray-900 hover:text-primary-500 dark:text-gray-100 dark:hover:text-primary-400">
+        class="no-scrollbar hidden max-w-40 items-center space-x-4 overflow-x-auto sm:flex sm:space-x-6 md:max-w-72 lg:max-w-96"
+      >
+        <router-link
+          :to="{ name: 'category', params: { categoryName: 'posts' } }"
+          class="block font-medium text-gray-900 hover:text-primary-500 dark:text-gray-100 dark:hover:text-primary-400"
+        >
           Tags
         </router-link>
-        <router-link :to="{ name: 'about' }"
-          class="block font-medium text-gray-900 hover:text-primary-500 dark:text-gray-100 dark:hover:text-primary-400">
+        <router-link
+          :to="{ name: 'about' }"
+          class="block font-medium text-gray-900 hover:text-primary-500 dark:text-gray-100 dark:hover:text-primary-400"
+        >
           About
         </router-link>
       </div>
-      <button aria-label="Search">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-          class="h-6 w-6 text-gray-900 hover:text-primary-500 dark:text-gray-100 dark:hover:text-primary-400">
-          <path stroke-linecap="round" stroke-linejoin="round"
-            d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
-        </svg>
-      </button>
+      <SearchButton />
 
       <ThemeToggle />
     </div>

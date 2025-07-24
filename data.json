@@ -16,11 +16,20 @@
       "path": "/posts/content/post_2.md",
       "publishedAt": "2024-12-06",
       "categories": [{ "name": "Elixir" }],
-      "status": "draft"
+      "status": "published"
     },
     {
       "id": 3,
       "title": "Ambiente de desenvolvimento Elixir",
+      "summary": "Learn how TypeScript can improve your frontend development and integrate it with Vue.",
+     "path": "/posts/content/post_3.md",
+      "publishedAt": "2024-01-05",
+      "categories": [{ "name": "Elixir" }, { "name": "Docker" }],
+      "status": "published"
+    },
+    {
+      "id": 4,
+      "title": "TypeScript com Vue",
       "summary": "Learn how TypeScript can improve your frontend development and integrate it with Vue.",
      "path": "/posts/content/post_3.md",
       "publishedAt": "2024-01-05",
