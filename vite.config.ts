@@ -1,6 +1,6 @@
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
-import { viteStaticCopy } from 'vite-plugin-static-copy';
+import { viteStaticCopy } from "vite-plugin-static-copy";
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -10,10 +10,23 @@ export default defineConfig({
     viteStaticCopy({
       targets: [
         {
-          src: 'data.json',
-          dest: '',
+          src: "data-pt.json",
+          dest: "",
+        },
+        {
+          src: "data-en.json",
+          dest: "",
+        },
+        {
+          src: "articles/**/*.md",
+          dest: "articles",
         },
       ],
     }),
   ],
+  resolve: {
+    alias: {
+      "@": "/src",
+    },
+  },
 });
