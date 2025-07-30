@@ -4,6 +4,9 @@ import ThemeToggle from "./ThemeToggle.vue";
 import MdiIcon from "./MdiIcon.vue";
 import { onMounted, ref, watchEffect } from "vue";
 import SearchButton from "./SearchButton.vue";
+import { useI18n } from "../composables/useI18n";
+import { useArticleStore } from "../store/articles";
+import LanguageToggleButton from "./LanguageToggleButton.vue";
 
 export default {
   name: "MainHeader",
@@ -11,9 +14,12 @@ export default {
     ThemeToggle,
     MdiIcon,
     SearchButton,
+    LanguageToggleButton,
   },
   setup() {
     const iconColor = ref("black");
+    const { t, locale, setLanguage, initLanguage } = useI18n();
+    const articleStore = useArticleStore();
 
     const updateIconColor = () => {
       iconColor.value = document.documentElement.classList.contains("dark")
@@ -21,12 +27,28 @@ export default {
         : "black";
     };
 
+    const handleLanguageChange = async (newLanguage: "pt" | "en") => {
+      setLanguage(newLanguage);
+      articleStore.setLanguage(newLanguage);
+      await articleStore.switchLanguage(newLanguage);
+
+      console.log(`Idioma alterado para: ${newLanguage}`);
+    };
+
     onMounted(() => {
       updateIconColor();
+      initLanguage();
+      articleStore.initLanguage();
       watchEffect(updateIconColor);
     });
 
-    return { mdiBalloon, iconColor };
+    return {
+      mdiBalloon,
+      iconColor,
+      t,
+      locale,
+      handleLanguageChange,
+    };
   },
 };
 </script>
@@ -63,6 +85,10 @@ export default {
         </router-link>
       </div>
       <SearchButton />
+      <LanguageToggleButton
+        :initial-language="locale"
+        @language-changed="handleLanguageChange"
+      />
 
       <ThemeToggle />
     </div>

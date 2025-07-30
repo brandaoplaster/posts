@@ -1,6 +1,6 @@
 import { Category } from "./category";
 
-export type ArticleStatus = 'draft' | 'published' | 'archived';
+export type ArticleStatus = "draft" | "published" | "archived";
 
 export interface Article {
   id: number;
@@ -10,4 +10,5 @@ export interface Article {
   publishedAt: string;
   categories: Category[];
   status: ArticleStatus;
+  language?: "pt" | "en";
 }
