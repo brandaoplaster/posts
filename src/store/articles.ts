@@ -3,125 +3,109 @@ import { Article, ArticleStatus } from "../types/article";
 
 export const useArticleStore = defineStore("article", {
   state: () => ({
-    articles: [] as Article[],
-    currentLanguage: "en",
+    allArticles: [] as Article[],
+    currentLanguage: "pt" as "pt" | "en",
     isLoading: false,
     error: null as string | null,
   }),
 
   getters: {
-    articleByLanguage: (state) => {
-      return state.articles.filter(
-        (article) =>
-          article.language === state.currentLanguage || !article.language
+    articles: (state) => {
+      return state.allArticles.filter(
+        (article) => article.language === state.currentLanguage
       );
     },
 
-    getArticlesByCategory: (state) => {
-      return (category: string): Article[] => {
-        return state.articles.filter(
-          (article) =>
-            (article.language === state.currentLanguage || !article.language) &&
-            article.categories.some((cat) => cat.name === category)
+    articlesByLanguage: (state) => {
+      return state.allArticles.filter(
+        (article) => article.language === state.currentLanguage
+      );
+    },
+
+    getPostById: (state) => {
+      return (id: number): Article | null => {
+        return (
+          state.allArticles.find(
+            (article) =>
+              article.id === id && article.language === state.currentLanguage
+          ) ?? null
         );
       };
     },
 
-    getArticleById: (state) => {
-      return (id: number): Article | null => {
-        return (
-          state.articles.find(
-            (article) =>
-              article.id === id &&
-              (article.language === state.currentLanguage || !article.language)
-          ) ?? null
+    getArticlesByCategory: (state) => {
+      return (category: string): Article[] => {
+        return state.allArticles.filter(
+          (article) =>
+            article.language === state.currentLanguage &&
+            article.categories.some((cat) => cat.name === category)
         );
       };
     },
   },
 
   actions: {
-    setLanguage(language: string): void {
+    setLanguage(language: "pt" | "en") {
       this.currentLanguage = language;
-      localStorage.setItem("language", language);
+      localStorage.setItem("articleLanguage", language);
     },
 
-    initLanguage(): void {
-      const savedLanguage = localStorage.getItem("language");
-      if (savedLanguage && (savedLanguage === "en" || savedLanguage === "pt")) {
+    initLanguage() {
+      const savedLanguage = localStorage.getItem("articleLanguage") as
+        | "pt"
+        | "en"
+        | null;
+      if (savedLanguage && (savedLanguage === "pt" || savedLanguage === "en")) {
         this.currentLanguage = savedLanguage;
       }
     },
 
-    async switchLanguage(newLanguage: "pt" | "en", status: ArticleStatus) {
-      this.setLanguage(newLanguage);
-      const hasArticlesInNewLanguage = this.articles.some(
-        (article) => article.language === newLanguage
-      );
+    async loadArticles(status: ArticleStatus): Promise<void> {
+      if (this.allArticles.length > 0) return;
 
-      if (!hasArticlesInNewLanguage) {
-        await this.loadArticlesByLanguage(status, newLanguage);
-      }
-    },
-
-    async loadArticlesByLanguage(
-      status: ArticleStatus,
-      language: "pt" | "en"
-    ): Promise<void> {
       this.isLoading = true;
       this.error = null;
 
       try {
-        const fileName = language === "pt" ? "data-pt.json" : "data-en.json";
-        const response = await fetch(`/posts/${fileName}`);
+        const [ptResponse, enResponse] = await Promise.all([
+          fetch("/posts/data-pt.json"),
+          fetch("/posts/data-en.json"),
+        ]);
 
-        if (!response.ok) {
-          throw new Error("Failed to fetch data");
+        let allArticles: Article[] = [];
+
+        if (ptResponse.ok) {
+          const ptData = await ptResponse.json();
+          const ptArticles = ptData.articles.map((article: Article) => ({
+            ...article,
+            language: "pt" as const,
+          }));
+          allArticles = [...allArticles, ...ptArticles];
         }
 
-        const data = await response.json();
-        const languageArticles = data.articles.map((article: Article) => ({
-          ...article,
-          language,
-        }));
+        if (enResponse.ok) {
+          const enData = await enResponse.json();
+          const enArticles = enData.articles.map((article: Article) => ({
+            ...article,
+            language: "en" as const,
+          }));
+          allArticles = [...allArticles, ...enArticles];
+        }
 
-        this.articles = [
-          ...this.articles.filter((article) => article.language !== language),
-          ...languageArticles.filter(
-            (article: Article) => article.status === status
-          ),
-        ];
+        this.allArticles = allArticles.filter(
+          (article: Article) => article.status === status
+        );
       } catch (error) {
         console.error("Error loading articles:", error);
-        this.error = "Failed to load articles";
+        this.error = "Erro ao carregar artigos";
+        this.allArticles = [];
       } finally {
         this.isLoading = false;
       }
     },
 
-    async loadArticles(status: ArticleStatus): Promise<void> {
-      try {
-        const response = await fetch("/posts/data.json");
-        if (!response.ok) {
-          throw new Error("Failed to fetch data");
-        }
-        const data = await response.json();
-        this.articles = data.articles.filter(
-          (article: Article) => article.status === status
-        );
-      } catch (error) {
-        console.error("Error loading articles:", error);
-      }
-    },
-
-    getPostById(id: number): Article | null {
-      return this.articles.find((article) => article.id === id) ?? null;
-    },
-
-    getArticlesByCategory(category: string): Article[] {
-      return this.articles.filter((article) =>
-        article.categories.some((cat) => cat.name === category)
-      );
+    switchLanguage(newLanguage: "pt" | "en") {
+      this.setLanguage(newLanguage);
     },
   },
 });
