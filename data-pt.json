@@ -1,0 +1,20 @@
+{
+  "articles": [
+    {
+      "id": 1,
+      "title": "Do Caos à Clareza: Reduzindo Dependências em Rails",
+      "summary": "O texto defende o princípio “menos é mais” no uso de gems em projetos Ruby on Rails, alertando que o excesso de dependências traz lentidão, vulnerabilidades e manutenção difícil. Propõe avaliar a real necessidade antes de instalar qualquer gem. Destaca gems essenciais: RuboCop (padronização de código), RSpec com FactoryBot, Faker e SimpleCov (testes e cobertura), Bullet (otimização de queries), Brakeman (segurança) e Pry (depuração). Menciona ainda Better Errors, Binding of Caller, Sidekiq e Devise como bônus úteis. Conclui que manter um Gemfile enxuto torna o projeto mais estável, seguro e sustentável.",
+      "path": "/posts/content/post_1.md",
+      "publishedAt": "2025-09-01",
+      "categories": [{ "name": "Ruby on Rails" }],
+      "status": "published",
+      "language": "pt"
+    }
+  ],
+  "categories": [
+    { "name": "Vue.js"},
+    { "name": "JavaScript"},
+    { "name": "Ruby on Rails"},
+    { "name": "Elixir"}
+  ]
+}

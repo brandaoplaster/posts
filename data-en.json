@@ -2,30 +2,33 @@
   "articles": [
     {
       "id": 1,
-      "title": "Introdução Ruby on Rails",
+      "title": "Introduction to Ruby on Rails",
       "summary": "This article introduces the basics of Vue 3 and how to get started with it.",
       "path": "/posts/content/post_1.md",
       "publishedAt": "2024-01-01",
       "categories": [{ "name": "Ruby on Rails" }, { "name": "JavaScript" }],
-      "status": "published"
+      "status": "archived",
+      "language": "en"
     },
     {
       "id": 2,
-      "title": "Extenções para Elixir no vscode",
+      "title": "Extensions for Elixir in vscode",
       "summary": "Principais extenções para usar no vscode para desenvolver com Elixir.",
       "path": "/posts/content/post_2.md",
       "publishedAt": "2024-12-06",
       "categories": [{ "name": "Elixir" }],
-      "status": "published"
+      "status": "archived",
+      "language": "en"
     },
     {
       "id": 3,
-      "title": "Ambiente de desenvolvimento Elixir",
+      "title": "Elixir development environment",
       "summary": "Learn how TypeScript can improve your frontend development and integrate it with Vue.",
      "path": "/posts/content/post_3.md",
       "publishedAt": "2024-01-05",
       "categories": [{ "name": "Elixir" }, { "name": "Docker" }],
-      "status": "published"
+      "status": "archived",
+      "language": "en"
     },
     {
       "id": 4,
@@ -34,7 +37,8 @@
      "path": "/posts/content/post_3.md",
       "publishedAt": "2024-01-05",
       "categories": [{ "name": "Elixir" }, { "name": "Docker" }],
-      "status": "archived"
+      "status": "archived",
+      "language": "en"
     }
   ],
   "categories": [
