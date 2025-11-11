@@ -7,7 +7,7 @@
       "path": "/posts/content/post_1.md",
       "publishedAt": "2024-01-01",
       "categories": [{ "name": "Ruby on Rails" }, { "name": "JavaScript" }],
-      "status": "published",
+      "status": "archived",
       "language": "en"
     },
     {
@@ -17,7 +17,7 @@
       "path": "/posts/content/post_2.md",
       "publishedAt": "2024-12-06",
       "categories": [{ "name": "Elixir" }],
-      "status": "published",
+      "status": "archived",
       "language": "en"
     },
     {
@@ -27,7 +27,7 @@
      "path": "/posts/content/post_3.md",
       "publishedAt": "2024-01-05",
       "categories": [{ "name": "Elixir" }, { "name": "Docker" }],
-      "status": "published",
+      "status": "archived",
       "language": "en"
     },
     {

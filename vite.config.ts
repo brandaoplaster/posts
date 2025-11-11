@@ -17,10 +17,10 @@ export default defineConfig({
           src: "data-en.json",
           dest: "",
         },
-        {
-          src: "articles/**/*.md",
-          dest: "articles",
-        },
+        // {
+        //   src: "articles/**/*.md",
+        //   dest: "articles",
+        // },
       ],
     }),
   ],
