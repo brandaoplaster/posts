@@ -80,7 +80,7 @@ const loading = ref<boolean>(false);
 const route = useRoute();
 const articleStore = useArticleStore();
 const { formatDate } = useDateFormatter();
-const { t, locale } = useI18n();
+const { locale } = useI18n();
 
 const computedCategories = computed(() => article.value?.categories ?? []);
 
@@ -120,38 +120,34 @@ async function fetchArticleById(articleId: number): Promise<Article> {
 }
 
 async function fetchMarkdown(path: string): Promise<string> {
-  let markdownPath = path;
-
-  if (!path.includes("-pt.") && !path.includes("-en.")) {
-    const pathParts = path.split(".");
-    const extension = pathParts.pop();
-    const basePath = pathParts.join(".");
-    markdownPath = `${basePath}-${articleStore.currentLanguage}.${extension}`;
-  }
-
   try {
-    const response = await fetch(markdownPath);
+    // O path já vem completo do JSON: "/posts/content/post_1.md"
+    const response = await fetch(path);
 
     if (!response.ok) {
-      if (markdownPath !== path) {
-        const fallbackResponse = await fetch(path);
-        if (!fallbackResponse.ok) {
-          throw new Error(`Erro ao carregar Markdown: ${response.statusText}`);
-        }
-        return marked(await fallbackResponse.text());
-      }
-      throw new Error(`Erro ao carregar Markdown: ${response.statusText}`);
+      throw new Error(
+        `Erro ao carregar Markdown: ${response.status} - ${response.statusText}`
+      );
     }
 
-    return marked(await response.text());
-  } catch (err) {
-    if (markdownPath !== path) {
-      const response = await fetch(path);
-      if (response.ok) {
-        return marked(await response.text());
-      }
+    const text = await response.text();
+
+    // Verificar se realmente recebeu Markdown e não HTML
+    if (text.includes("<!DOCTYPE html>") || text.includes("<html")) {
+      throw new Error(
+        "Arquivo não encontrado - recebeu HTML em vez de Markdown"
+      );
     }
-    throw err;
+
+    console.log("✅ Markdown carregado:", path);
+    return marked(text);
+  } catch (err) {
+    console.error("❌ Erro ao carregar markdown:", path, err);
+    throw new Error(
+      locale.value === "pt"
+        ? "Não foi possível carregar o conteúdo do artigo."
+        : "Failed to load article content."
+    );
   }
 }
 
@@ -171,6 +167,7 @@ async function initializePage(articleId?: string | number): Promise<void> {
 
     article.value = await fetchArticleById(parsedId);
     content.value = await fetchMarkdown(article.value.path);
+    console.log();
   } catch (err) {
     console.error("Erro ao carregar artigo:", err);
     error.value = err instanceof Error ? err.message : "Erro desconhecido";
